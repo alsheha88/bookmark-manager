@@ -61,12 +61,12 @@ The Bookmarks app is built as a full stack app. The user is able to:
 - CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- TypeScript
-- Tailwind CSS
-- React Router
-- React Hook Form
-- Zod
-- TanStack Query
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Router](https://reactrouter.com/home)
+- [React Hook Form](https://react-hook-form.com/)
+- [Zod](https://zod.dev/)
+- [TanStack Query](https://tanstack.com/query/latest)
 - Node.js
 - Express.js
 - PostgreSQL
