@@ -48,8 +48,8 @@ The Bookmarks app is built as a full stack app. The user is able to:
 
 ### Links
 
-- Solution URL: [Solution Url](https://github.com/alsheha88/bookmark-manager)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Github Repo](https://github.com/alsheha88/bookmark-manager)
+- Live Site URL: [Live Site](https://bookmark-manager-three-eosin.vercel.app)
 
 ## My process
 
