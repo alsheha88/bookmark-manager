@@ -12,27 +12,26 @@ type modalProps = {
 };
 
 const ProfileCard = ({ isOpen }: modalProps) => {
-	const {close} = useUI()
+	const { close } = useUI();
 	const { logout } = useAuth();
 	const navigate = useNavigate();
 	const { data } = useUser();
 
 	const handleLogout = () => {
 		logout();
-		close()
+		close();
 		navigate("/login");
 	};
-	return (
-		<div
-			className={`${isOpen ? "grid" : "hidden"} z-1000 w-62 bg-neutral-light-0 dark:bg-neutral-dark-600 absolute top-[3rem] right-0  rounded-lg border border-neutral-light-100 shadow-[0px_2px_4px_0px_rgba(34,38,39,0.1)] dark:border-neutral-dark-500`}>
-			<button className="px-4 py-3 flex gap-3 cursor-pointer">
-				<CircleUser className="w-10 h-10 rounded-full text-neutral-light-500 dark:text-neutral-dark-100" />
 
-				<div className="flex flex-col items-start">
-					<h3 className="text-sm font-semibold text-neutral-light-900 dark:text-neutral-dark-0">
-						{`${data?.firstName} ${data?.lastName} `}
+	return (
+		<div className={`${isOpen ? "grid" : "hidden"} z-50 w-72 bg-neutral-light-0 dark:bg-neutral-dark-600 absolute top-[3rem] right-0 rounded-lg border border-neutral-light-100 shadow-[0px_2px_4px_0px_rgba(34,38,39,0.1)] dark:border-neutral-dark-500`}>
+			<button className="px-4 py-3 flex gap-3 cursor-pointer min-w-0 w-full">
+				<CircleUser className="w-10 h-10 rounded-full text-neutral-light-500 dark:text-neutral-dark-100 shrink-0" />
+				<div className="flex flex-col items-start min-w-0 w-full">
+					<h3 className="text-sm font-semibold text-neutral-light-900 dark:text-neutral-dark-0 truncate w-full">
+						{`${data?.firstName} ${data?.lastName}`}
 					</h3>
-					<p className="text-neutral-light-800 dark:text-neutral-dark-100">
+					<p className="text-sm text-neutral-light-800 dark:text-neutral-dark-100 truncate w-full">
 						{data?.username}
 					</p>
 				</div>
