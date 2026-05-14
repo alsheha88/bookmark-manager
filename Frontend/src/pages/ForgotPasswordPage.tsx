@@ -4,7 +4,7 @@ import logo from "../assets/images/logo-dark-theme.svg";
 
 const ForgotPasswordPage = () => {
 	return (
-		<div className="h-screen flex items-center justify-center bg-neutral-light-100 dark:bg-neutral-dark-900">
+		<div className="min-h-dvh flex items-center justify-center bg-neutral-light-100 dark:bg-neutral-dark-900">
 			<form
 				action=""
 				className=" grid gap-8 rounded-xl py-8 px-5 md:py-10 md:px-8 shadow-[0px,1px,2px,rgba(10,13,18,0.05)] border border-neutral-light-500 dark:border-neutral-dark-500  bg-neutral-light-0 dark:bg-neutral-dark-800">

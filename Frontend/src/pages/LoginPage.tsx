@@ -7,9 +7,11 @@ import { type LoginData, loginSchema } from "../schemas/loginSchema";
 import { useLogin } from "../hooks/auth/useLogin";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import { useTheme } from "../Context/ThemeContext";
 
 const LoginPage = () => {
 	const { mutate, isError, error } = useLogin();
+	const {theme} = useTheme()
 	const [showPassword, setShowPassword] = useState(false);
 	const {
 		register,
@@ -22,7 +24,7 @@ const LoginPage = () => {
 	const onSubmit: SubmitHandler<LoginData> = (data) => mutate(data);
 
 	return (
-		<div className="h-screen flex items-center justify-center bg-neutral-light-100 dark:bg-neutral-dark-900">
+		<div className="min-h-dvh flex items-center justify-center bg-neutral-light-100 dark:bg-neutral-dark-900">
 			<form
 				action=""
 				onSubmit={handleSubmit(onSubmit)}
@@ -57,9 +59,9 @@ const LoginPage = () => {
 							onMouseUp={() => setShowPassword(false)}
 							className="absolute top-[50%] right-3 translate-y-[10%] cursor-pointer">
 							{showPassword ? (
-								<EyeOff color="#001f1f" size={20} />
+								<EyeOff color={theme === "dark" ? "#ffffff" : "#001f1f" }  size={20} />
 							) : (
-								<Eye color="#001f1f" size={20} />
+								<Eye color={theme === "dark" ? "#ffffff" : "#001f1f" } size={20} />
 							)}
 						</button>
 					</div>

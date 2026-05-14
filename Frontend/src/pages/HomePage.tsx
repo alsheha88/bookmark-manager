@@ -70,7 +70,7 @@ const HomePage = () => {
 	}
 
 	return (
-		<div className="min-h-screen flex flex-col gap-5 px-4 pt-6 pb-16 md:pt-8 md:px-8 bg-neutral-light-100 dark:bg-neutral-dark-900">
+		<div className="min-h-dvh flex flex-col gap-5 px-4 pt-6 pb-16 md:pt-8 md:px-8 bg-neutral-light-100 dark:bg-neutral-dark-900">
 			<div className="flex items-center justify-between gap-4">
 				<h2 className="text-xl md:text-2xl font-bold text-neutral-light-900 dark:text-neutral-dark-0">
 					All bookmarks

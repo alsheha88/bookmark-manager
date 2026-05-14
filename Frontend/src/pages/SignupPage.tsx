@@ -20,7 +20,7 @@ const SignupPage = () => {
 	const onSubmit: SubmitHandler<SignUpData> = (data) => mutate(data);
 
 	return (
-		<div className="h-screen flex items-center justify-center bg-neutral-light-100 dark:bg-neutral-dark-900">
+		<div className="min-h-dvh flex items-center justify-center bg-neutral-light-100 dark:bg-neutral-dark-900">
 			<form
 				action=""
 				onSubmit={handleSubmit(onSubmit)}
