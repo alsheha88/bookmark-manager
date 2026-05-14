@@ -4,6 +4,7 @@
   "main": "server.ts",
   "type": "module",
   "scripts": {
+    "postinstall": "prisma generate",
     "start": "tsx server.ts",
     "dev": "nodemon --exec tsx server.ts"
   },

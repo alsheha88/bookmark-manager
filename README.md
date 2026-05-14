@@ -48,7 +48,7 @@ The Bookmarks app is built as a full stack app. The user is able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Solution Url](https://github.com/alsheha88/bookmark-manager)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
