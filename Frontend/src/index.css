@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+	/* Neutral Light */
+	--color-neutral-light-0: rgba(255, 255, 255, 1);
+	--color-neutral-light-100: rgba(232, 240, 239, 1);
+	--color-neutral-light-300: rgba(221, 233, 231, 1);
+	--color-neutral-light-400: rgba(192, 207, 204, 1);
+	--color-neutral-light-500: rgba(137, 148, 146, 1);
+	--color-neutral-light-800: rgba(76, 92, 89, 1);
+	--color-neutral-light-900: rgba(5, 21, 19, 1);
+
+	/* Neutral Dark */
+	--color-neutral-dark-0: rgba(255, 255, 255, 1);
+	--color-neutral-dark-100: rgba(177, 185, 185, 1);
+	--color-neutral-dark-300: rgba(0, 112, 110, 1);
+	--color-neutral-dark-400: rgba(0, 71, 70, 1);
+	--color-neutral-dark-500: rgba(0, 66, 65, 1);
+	--color-neutral-dark-600: rgba(0, 46, 45, 1);
+	--color-neutral-dark-800: rgba(0, 31, 31, 1);
+	--color-neutral-dark-900: rgba(0, 20, 20, 1);
+
+	/* Teal */
+	--color-teal-700: rgba(1, 71, 69, 1);
+	--color-teal-800: rgba(1, 60, 59, 1);
+
+	/* Red */
+	--color-red-600: rgba(253, 71, 64, 1);
+	--color-red-800: rgba(203, 10, 4, 1);
+	--corner-radius-0: 0rem;
+	--corner-radius-2: 0.125rem;
+	--corner-radius-4: 0.25rem;
+	--corner-radius-6: 0.375rem;
+	--corner-radius-8: 0.5rem;
+	--corner-radius-10: 0.625rem;
+	--corner-radius-12: 0.75rem;
+	--corner-radius-16: 1rem;
+	--corner-radius-20: 1.25rem;
+	--corner-radius-24: 1.5rem;
+	--corner-radius-full: 62.4375rem;
+	--spacing-0: 0rem;
+	--spacing-025: 0.125rem;
+	--spacing-050: 0.25rem;
+	--spacing-075: 0.375rem;
+	--spacing-100: 0.5rem;
+	--spacing-125: 0.625rem;
+	--spacing-150: 0.75rem;
+	--spacing-200: 1rem;
+	--spacing-250: 1.25rem;
+	--spacing-300: 1.5rem;
+	--spacing-400: 2rem;
+	--spacing-500: 2.5rem;
+	--spacing-600: 3rem;
+	--spacing-800: 4rem;
+	--spacing-1000: 5rem;
+	--spacing-1200: 6rem;
+	--spacing-1400: 7rem;
+	--spacing-1600: 8rem;
+	--spacing-1800: 8.75rem;
+	--font-manrope: "Manrope";
+}
+@variant dark (&:where(.dark, .dark *));
+
+.border-gradient {
+  position: relative;
+}
+
+.border-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  color: #001f1f;
+}
