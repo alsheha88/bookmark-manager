@@ -97,7 +97,7 @@ I have really enjoyed building a full stack application with all its challenges 
 
 ### Useful resources
 
-- [TanStack Qury](https://tanstack.com/query/latest)
+- [TanStack Query](https://tanstack.com/query/latest)
 - [REACT Router](https://reactrouter.com/home)
 - [REACT Hook Form](https://react-hook-form.com/)
 
