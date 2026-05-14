@@ -61,20 +61,11 @@
 }
 @variant dark (&:where(.dark, .dark *));
 
-.border-gradient {
-  position: relative;
+html, body, #root {
+    min-height: 100dvh;
+    background-color: rgba(232, 240, 239, 1); /* neutral-light-100, light mode bg */
 }
 
-.border-gradient::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  color: #ffffff;
+html.dark, html.dark body, html.dark #root {
+    background-color: rgba(0, 20, 20, 1); /* neutral-dark-900, dark mode bg */
 }
