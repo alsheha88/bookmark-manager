@@ -53,7 +53,7 @@ const AddBookmarkForm = () => {
 			className={`${isModalOpen ? "grid" : "hidden"} z-1000 fixed inset-0 bg-black/50 place-items-center`}>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className="grid gap-8 rounded-2xl py-6 px-5 md:p-8 shadow-[0px,1px,2px,rgba(10,13,18,0.05)] border border-neutral-light-500 dark:border-neutral-dark-500 bg-neutral-light-0 dark:bg-neutral-dark-800">
+				className="grid gap-8 rounded-2xl py-6 px-5 md:p-8 shadow-[0px_1px_2px_rgba(10,13,18,0.05)] border border-neutral-light-500 dark:border-neutral-dark-500 bg-neutral-light-0 dark:bg-neutral-dark-800">
 				<div className="flex flex-col gap-2.5">
 					<h1 className="text-2xl font-bold text-neutral-light-900 dark:text-neutral-dark-0">
 						Add a Bookmark
@@ -83,7 +83,7 @@ const AddBookmarkForm = () => {
 								{...register("description", {
 									onChange: (e) => setCount(e.target.value.length),
 								})}
-								className="h-20 p-3 border text-neutral-light-900 dark:text-neutral-dark-0 border-neutral-light-500 rounded-lg bg-neutral-light-0 shadow-[0px,1px,2px,rgba(10,13,18,0.05)] dark:bg-neutral-dark-600 dark:border-neutral-dark-300"
+								className="h-20 p-3 border text-neutral-light-900 dark:text-neutral-dark-0 border-neutral-light-500 rounded-lg bg-neutral-light-0 shadow-[0px_1px_2px_rgba(10,13,18,0.05)] dark:bg-neutral-dark-600 dark:border-neutral-dark-300"
 							/>
 							<span className="text-end text-xs font-medium dark:text-neutral-dark-100 text-neutral-light-800">
 								{count}/280
@@ -113,12 +113,12 @@ const AddBookmarkForm = () => {
 				<div className="flex gap-4 items-center justify-end">
 					<button
 						onClick={handleClose}
-						className="px-4 py-3 rounded-lg text-neutral-light-900 dark:text-neutral-light-0 font-semibold border border-neutral-light-400 shadow-[0px,0px,0px,1px,rgba(34,38,39,0.12)] dark:border-neutral-dark-400 cursor-pointer"
+						className="px-4 py-3 rounded-lg text-neutral-light-900 dark:text-neutral-light-0 font-semibold border border-neutral-light-400 shadow-[0px_0px_0px_1px_rgba(34,38,39,0.12)] dark:border-neutral-dark-400 cursor-pointer"
 						type="button">
 						Cancel
 					</button>
 					<button
-						className="py-3 px-4 bg-teal-700 rounded-lg text-neutral-light-0 shadow-[0px,0px,0px,1px,rgba(34,38,39,0.12)] cursor-pointer hover:bg-teal-800"
+						className="py-3 px-4 bg-teal-700 rounded-lg text-neutral-light-0 shadow-[0px_0px_0px_1px_rgba(34,38,39,0.12)] cursor-pointer hover:bg-teal-800"
 						type="submit">
 						Add Bookmark
 					</button>

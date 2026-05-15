@@ -29,7 +29,7 @@ const LoginPage = () => {
 			<form
 				action=""
 				onSubmit={handleSubmit(onSubmit)}
-				className=" grid gap-8 rounded-xl py-8 px-5 md:py-10 md:px-8 shadow-[0px,1px,2px,rgba(10,13,18,0.05)] border border-neutral-light-500 dark:border-neutral-dark-500  bg-neutral-light-0 dark:bg-neutral-dark-800">
+				className=" grid gap-8 rounded-xl py-8 px-5 md:py-10 md:px-8 shadow-[0px_1px_2px_rgba(10,13,18,0.05)] border border-neutral-light-500 dark:border-neutral-dark-500  bg-neutral-light-0 dark:bg-neutral-dark-800">
 				<img src={logo} alt="" />
 
 				<div className="grid gap-1.5">
@@ -79,7 +79,7 @@ const LoginPage = () => {
 					)}
 
 					<button
-						className="py-3 px-4 bg-teal-700 rounded-lg text-neutral-light-0 shadow-[0px,0px,0px,1px,rgba(34,38,39,0.12)] cursor-pointer hover:bg-teal-800"
+						className="py-3 px-4 bg-teal-700 rounded-lg text-neutral-light-0 shadow-[0px_0px_0px_1px_rgba(34,38,39,0.12)] cursor-pointer hover:bg-teal-800"
 						type="submit">
 						Log in
 					</button>

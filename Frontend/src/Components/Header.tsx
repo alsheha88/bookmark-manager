@@ -60,7 +60,7 @@ const Header = () => {
 			<div className="flex items-center gap-2.5 md:gap-4">
 				<button
 					onClick={() => open("add-bookmark-modal")}
-					className="p-2.5 md:py-3 md:px-4 bg-teal-700 rounded-lg text-neutral-light-0 shadow-[0px,0px,0px,1px,rgba(34,38,39,0.12)] cursor-pointer hover:bg-teal-800"
+					className="p-2.5 md:py-3 md:px-4 bg-teal-700 rounded-lg text-neutral-light-0 shadow-[0px,0px,0px,1px_rgba(34,38,39,0.12)] cursor-pointer hover:bg-teal-800"
 					type="button">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

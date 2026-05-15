@@ -23,7 +23,7 @@ const ResetPasswordPage = () => {
 					<InputComponent text="Confirm Password" name="confirmPassword" type="text" label={<sup>*</sup>} />
 
 					<button
-						className="py-3 px-4 bg-teal-700 rounded-lg text-neutral-light-0 shadow-[0px,0px,0px,1px,rgba(34,38,39,0.12)] cursor-pointer hover:bg-teal-800"
+						className="py-3 px-4 bg-teal-700 rounded-lg text-neutral-light-0 shadow-[0px_0px_0px_1px_rgba(34,38,39,0.12)] cursor-pointer hover:bg-teal-800"
 						type="submit">
 						Reset Password
 					</button>

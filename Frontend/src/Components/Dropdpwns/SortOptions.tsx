@@ -18,7 +18,7 @@ const SortOptions = ({ isOpen, setSort }: DropdownProps) => {
 
 	return (
 		<div
-			className={`absolute ${isOpen ? "grid" : "hidden"} z-1000 w-48 right-0 top-[calc(100%+0.5rem)] gap-2 p-2 bg-neutral-light-0 dark:bg-neutral-dark-600 rounded-lg border border-neutral-light-100 dark:border-neutral-dark-500 shadow-[0px_6px_14px_0px,rgba(34,38,39,0.12)]`}>
+			className={`grid absolute ${isOpen ? "pointer-events-auto opacity-100 transition-opacity duration-200 ease-in" : "pointer-events-none opacity-0 transition-opacity duration-200 ease-in"} z-1000 w-48 right-0 top-[calc(100%+0.5rem)] gap-2 p-2 bg-neutral-light-0 dark:bg-neutral-dark-600 rounded-lg border border-neutral-light-100 dark:border-neutral-dark-500 shadow-[0px_6px_14px_0px_rgba(34,38,39,0.12)]`}>
 			
 			<button
 				type="button"
