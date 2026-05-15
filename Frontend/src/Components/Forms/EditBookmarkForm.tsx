@@ -8,6 +8,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useUI } from "../../Context/ToggleContext";
 import { useState } from "react";
+import { useToastContext } from "../../Context/ToastContext";
 
 type Props = {
 	id: number;
@@ -17,13 +18,14 @@ const EditBookmarkForm = ({ id }: Props) => {
 	const { active, close } = useUI();
 	const isModalOpen = active === `edit-bookmark-modal-${id}`;
 	const [count, setCount] = useState(0);
+	const { setMode, setIsToastOpen } = useToastContext();
 
 	const { mutate } = useEditBookmark();
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset
+		reset,
 	} = useForm<BookmarkData>({
 		resolver: zodResolver(bookmarkSchema),
 	});
@@ -38,8 +40,10 @@ const EditBookmarkForm = ({ id }: Props) => {
 					.filter(Boolean)
 			: [];
 		mutate({ id, bookmark: { ...data, tags, favicon } });
+		setMode("edit");
+		setIsToastOpen(true);
 		close();
-		reset()
+		reset();
 	};
 
 	function handleClose() {

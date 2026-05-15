@@ -10,11 +10,15 @@ import { useUI } from "../Context/ToggleContext";
 import { BeatLoader } from "react-spinners";
 import { useTheme } from "../Context/ThemeContext";
 import { useDeleteBookmark } from "../hooks/bookmarks/useDeleteBookmark";
+import Toast from "../Components/Toast";
+import { useToastContext } from "../Context/ToastContext";
 
 const ArchivePage = () => {
 	const { selectedTag, sort, search } = useFilterContext();
 	const { active, close, open } = useUI();
-	const {theme} = useTheme()
+	const { theme } = useTheme();
+	const { setMode, setIsToastOpen, isToastOpen, mode } = useToastContext();
+
 	const { data, isPending, isError, isFetching } = useArchBookmarks(
 		selectedTag ?? undefined,
 		sort ?? undefined,
@@ -23,7 +27,7 @@ const ArchivePage = () => {
 
 	const { mutate: unarchiveBookmark } = useUnarchiveBookmark();
 	const { mutate: updateVisitBookmark } = useUpdateBookmarkVisit();
-	const {mutate:deleteBookmark} = useDeleteBookmark()
+	const { mutate: deleteBookmark } = useDeleteBookmark();
 
 	function visit(id: number) {
 		close();
@@ -33,6 +37,8 @@ const ArchivePage = () => {
 	const copy = async function copyUrl(url: string) {
 		try {
 			await navigator.clipboard.writeText(url);
+			setMode("copy");
+			setIsToastOpen(true);
 			close();
 		} catch (err) {
 			if (err instanceof Error) {
@@ -44,23 +50,27 @@ const ArchivePage = () => {
 	function unarchive(id: number) {
 		close();
 		unarchiveBookmark(id);
+		setMode("unarchive");
+		setIsToastOpen(true);
 	}
 
 	function bookmarkDelete(id: number) {
 		close();
 		deleteBookmark(id);
+		setMode("delete");
+		setIsToastOpen(true);
 	}
 	function fetchFavicon(url: string) {
 		const domain = new URL(url).hostname;
 		const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 
-		return favicon
+		return favicon;
 	}
 
 	const archivedBookmarks = data?.filter((bookmark) => bookmark.isArchived);
 
 	return (
-		<div className="min-h-dvh flex flex-col gap-5 px-4 pt-6 pb-16 md:pt-8 md:px-8 bg-neutral-light-100 dark:bg-neutral-dark-900">
+		<div className="min-h-dvh flex flex-col gap-5 px-4 pt-6 pb-16 md:pt-8 md:px-8 bg-neutral-light-100 dark:bg-neutral-dark-900 relative">
 			<div className="flex items-center justify-between gap-4">
 				<h2 className="text-xl md:text-2xl font-bold text-neutral-light-900 dark:text-neutral-dark-0">
 					Archived bookmarks
@@ -89,7 +99,11 @@ const ArchivePage = () => {
 					/>
 				</div>
 			</div>
-			<div className="grid gap-8 pb-8" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))" }}>
+			<div
+				className="grid gap-8 pb-8"
+				style={{
+					gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+				}}>
 				{isPending || isFetching ? (
 					<div className="col-span-full flex justify-center items-center py-20">
 						<BeatLoader
@@ -103,29 +117,32 @@ const ArchivePage = () => {
 							Something went wrong. Please try again.
 						</p>
 					</div>
-				) : archivedBookmarks?.map((item) => {
-					return (
-						<BookmarkCard
-							key={item.id}
-							id={item.id}
-							title={item.title}
-							url={item.url}
-							description={item.description}
-							favicon={fetchFavicon(item.url)}
-							visitCount={item.visitCount}
-							lastVisited={item.lastVisited}
-							createdAt={item.createdAt}
-							tags={item.tags}
-							isPinned={item.pinned}
-							isArchived={item.isArchived}
-							copy={() => copy(item.url)}
-							unarchive={() => unarchive(item.id)}
-							visit={() => visit(item.id)}
-							bookmarkDelete={() => bookmarkDelete(item.id)}
-						/>
-					);
-				})}
+				) : (
+					archivedBookmarks?.map((item) => {
+						return (
+							<BookmarkCard
+								key={item.id}
+								id={item.id}
+								title={item.title}
+								url={item.url}
+								description={item.description}
+								favicon={fetchFavicon(item.url)}
+								visitCount={item.visitCount}
+								lastVisited={item.lastVisited}
+								createdAt={item.createdAt}
+								tags={item.tags}
+								isPinned={item.pinned}
+								isArchived={item.isArchived}
+								copy={() => copy(item.url)}
+								unarchive={() => unarchive(item.id)}
+								visit={() => visit(item.id)}
+								bookmarkDelete={() => bookmarkDelete(item.id)}
+							/>
+						);
+					})
+				)}
 			</div>
+			<Toast mode={mode} toastOpen={isToastOpen} />
 		</div>
 	);
 };

@@ -8,10 +8,13 @@ import {
 import InputComponent from "../InputComponent";
 import { useUI } from "../../Context/ToggleContext";
 import { useState } from "react";
+import { useToastContext } from "../../Context/ToastContext";
 
 const AddBookmarkForm = () => {
 	const { active, close } = useUI();
 	const isModalOpen = active === "add-bookmark-modal";
+	const { setMode, setIsToastOpen } = useToastContext();
+	
 	const [count, setCount] = useState(0);
 
 	const { mutate } = useAddBookmark();
@@ -34,6 +37,8 @@ const AddBookmarkForm = () => {
 					.filter(Boolean)
 			: [];
 		mutate({ bookmark: { ...data, url: data.websiteURL, tags, favicon } });
+		setMode("add");
+		setIsToastOpen(true)
 		close();
 		reset();
 	};

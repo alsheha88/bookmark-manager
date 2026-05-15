@@ -8,10 +8,11 @@ import { useLogin } from "../hooks/auth/useLogin";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useTheme } from "../Context/ThemeContext";
+import { BeatLoader } from "react-spinners";
 
 const LoginPage = () => {
-	const { mutate, isError, error } = useLogin();
-	const {theme} = useTheme()
+	const { mutate, isError, error, isPending } = useLogin();
+	const { theme } = useTheme();
 	const [showPassword, setShowPassword] = useState(false);
 	const {
 		register,
@@ -59,9 +60,15 @@ const LoginPage = () => {
 							onMouseUp={() => setShowPassword(false)}
 							className="absolute top-[50%] right-3 translate-y-[10%] cursor-pointer">
 							{showPassword ? (
-								<EyeOff color={theme === "dark" ? "#ffffff" : "#001f1f" }  size={20} />
+								<EyeOff
+									color={theme === "dark" ? "#ffffff" : "#001f1f"}
+									size={20}
+								/>
 							) : (
-								<Eye color={theme === "dark" ? "#ffffff" : "#001f1f" } size={20} />
+								<Eye
+									color={theme === "dark" ? "#ffffff" : "#001f1f"}
+									size={20}
+								/>
 							)}
 						</button>
 					</div>
@@ -106,6 +113,14 @@ const LoginPage = () => {
 					</div>
 				</div>
 			</form>
+			{isPending && (
+				<div className="flex fixed inset-0 bg-black/50 items-center justify-center">
+					<BeatLoader
+						color={theme === "dark" ? "#00706e" : "#899492"}
+						size={15}
+					/>
+				</div>
+			)}
 		</div>
 	);
 };

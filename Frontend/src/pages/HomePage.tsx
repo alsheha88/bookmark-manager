@@ -11,12 +11,14 @@ import { useFilterContext } from "../Context/FilterContext";
 import { useUI } from "../Context/ToggleContext";
 import { useTheme } from "../Context/ThemeContext";
 import { BeatLoader } from "react-spinners";
+import Toast from "../Components/Toast";
+import { useToastContext } from "../Context/ToastContext";
 
 const HomePage = () => {
 	const { selectedTag, sort, search } = useFilterContext();
 	const { active, close, open } = useUI();
 	const { theme } = useTheme();
-
+	const { setMode, setIsToastOpen, isToastOpen, mode } = useToastContext();
 	const { mutate: archiveBookmark } = useArchiveBookmark();
 	const { mutate: updateVisitBookmark } = useUpdateBookmarkVisit();
 	const { mutate: pinBookmark } = usePinBookmark();
@@ -34,6 +36,8 @@ const HomePage = () => {
 	const copy = async function copyUrl(url: string) {
 		try {
 			await navigator.clipboard.writeText(url);
+			setMode("copy");
+			setIsToastOpen(true);
 			close();
 		} catch (err) {
 			if (err instanceof Error) {
@@ -45,6 +49,8 @@ const HomePage = () => {
 	function archive(id: number) {
 		close();
 		archiveBookmark(id);
+		setMode("archive");
+		setIsToastOpen(true);
 	}
 
 	function visit(id: number) {
@@ -55,6 +61,8 @@ const HomePage = () => {
 	function pin(id: number) {
 		close();
 		pinBookmark(id);
+		setMode("pin");
+		setIsToastOpen(true);
 	}
 
 	function unpin(id: number) {
@@ -66,11 +74,11 @@ const HomePage = () => {
 		const domain = new URL(url).hostname;
 		const favicon = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 
-		return favicon
+		return favicon;
 	}
 
 	return (
-		<div className="min-h-dvh flex flex-col gap-5 px-4 pt-6 pb-16 md:pt-8 md:px-8 bg-neutral-light-100 dark:bg-neutral-dark-900">
+		<div className="min-h-dvh flex flex-col gap-5 px-4 pt-6 pb-16 md:pt-8 md:px-8 bg-neutral-light-100 dark:bg-neutral-dark-900 relative">
 			<div className="flex items-center justify-between gap-4">
 				<h2 className="text-xl md:text-2xl font-bold text-neutral-light-900 dark:text-neutral-dark-0">
 					All bookmarks
@@ -102,7 +110,7 @@ const HomePage = () => {
 				</div>
 			</div>
 			<div
-				className="grid gap-8 pb-8 #899492"
+				className="grid gap-8 pb-8 relative"
 				style={{
 					gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
 				}}>
@@ -145,6 +153,7 @@ const HomePage = () => {
 					})
 				)}
 			</div>
+			<Toast mode={mode} toastOpen={isToastOpen} />
 		</div>
 	);
 };
