@@ -90,7 +90,7 @@ const Sidebar = () => {
 	return (
 		<>
 			{/* Desktop */}
-			<div className="hidden lg:flex flex-col min-h-screen w-74 bg-neutral-light-0 dark:bg-neutral-dark-800">
+			<div className="hidden lg:flex flex-col min-h-screen w-74 bg-neutral-light-0 dark:bg-neutral-dark-800 border-r border-r-neutral-light-300 dark:border-r-neutral-dark-500">
 				{sidebarContent}
 			</div>
 
