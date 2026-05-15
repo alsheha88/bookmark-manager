@@ -35,7 +35,7 @@ const Header = () => {
 				</button>
 				<label
 					htmlFor="search"
-					className="dark:bg-neutral-dark-600 bg-neutral-light-0 hover:bg-neutral-light-100 dark:hover:bg-neutral-dark-500 p-3 flex items-center gap-1.5 rounded-lg border border-neutral-light-300 shadow-[0px,0px,0px,1px,rgba(34,38,39,0.12)] cursor-pointer dark:border-neutral-dark-500">
+					className="w-80 min-w-48 shrink dark:bg-neutral-dark-600 bg-neutral-light-0 hover:bg-neutral-light-100 dark:hover:bg-neutral-dark-500 p-3 flex items-center gap-1.5 rounded-lg border border-neutral-light-300 shadow-[0px,0px,0px,1px,rgba(34,38,39,0.12)] cursor-pointer dark:border-neutral-dark-500">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="20"
@@ -53,7 +53,7 @@ const Header = () => {
 						id="search"
 						placeholder="Search by title..."
 						onChange={handleChange}
-						className=" text-sm font-medium placeholder-neutral-light-800 text-neutral-light-900 dark:text-neutral-dark-0 dark:placeholder-neutral-dark-100"
+						className="w-full text-sm font-medium placeholder-neutral-light-800 text-neutral-light-900 dark:text-neutral-dark-0 dark:placeholder-neutral-dark-100"
 					/>
 				</label>
 			</div>
