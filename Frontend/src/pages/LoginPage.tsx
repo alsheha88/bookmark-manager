@@ -82,8 +82,10 @@ const LoginPage = () => {
 
 					<button
 						className="py-3 px-4 bg-teal-700 rounded-lg text-neutral-light-0 shadow-[0px_0px_0px_1px_rgba(34,38,39,0.12)] cursor-pointer hover:bg-teal-800"
-						type="submit">
-						Log in
+						type="submit"
+						disabled={isPending}
+						>
+						{isPending ? "Logging in..." : "Log in"}
 					</button>
 				</div>
 				{isError && (
