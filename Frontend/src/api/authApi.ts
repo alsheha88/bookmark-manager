@@ -9,7 +9,7 @@ export async function signUpUser(credentials: SignUpData) {
 	});
 
 	if (res.status === 401) throw new Error("401");
-	if (!res.ok) throw new Error("Failed to fetch data");
+	if (!res.ok) throw new Error("Email already exists");
 
 	return res.json();
 }

@@ -5,10 +5,12 @@ import { type SignUpData, signUpSchema } from "../schemas/registerSchema";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRegister } from "../hooks/auth/useRegister";
-
+import { BeatLoader } from "react-spinners";
+import { useTheme } from "../Context/ThemeContext";
 
 const SignupPage = () => {
-	const {mutate} = useRegister()
+	const { mutate, isPending, isError, error } = useRegister();
+	const {theme} = useTheme()
 	const {
 		register,
 		handleSubmit,
@@ -44,14 +46,27 @@ const SignupPage = () => {
 						label={<sup>*</sup>}
 						{...register("fullName")}
 					/>
-					{errors.fullName && <small className="bold text-red-800 text-[12px]">{errors.fullName.message}</small>}
+					{errors.fullName && (
+						<small className="bold text-red-800 text-[12px]">
+							{errors.fullName.message}
+						</small>
+					)}
 					<InputComponent
 						text="Email Address"
 						type="text"
 						label={<sup>*</sup>}
 						{...register("email")}
 					/>
-					{errors.email && <small className="bold text-red-800 text-[12px]">{errors.email.message}</small>}
+					{errors.email && (
+						<small className="bold text-red-800 text-[12px]">
+							{errors.email.message}
+						</small>
+					)}
+					{isError && (
+						<small className="bold text-red-800 text-[12px]">
+							{error.message}
+						</small>
+					)}
 
 					<InputComponent
 						text="Password"
@@ -59,7 +74,11 @@ const SignupPage = () => {
 						label={<sup>*</sup>}
 						{...register("password")}
 					/>
-					{errors.password && <small className="bold text-red-800 text-[12px]">{errors.password.message}</small>}
+					{errors.password && (
+						<small className="bold text-red-800 text-[12px]">
+							{errors.password.message}
+						</small>
+					)}
 
 					<button
 						className="py-3 px-4 bg-teal-700 rounded-lg text-neutral-light-0 shadow-[0px_0px_0px_1px_rgba(34,38,39,0.12)] cursor-pointer hover:bg-teal-800"
@@ -79,6 +98,14 @@ const SignupPage = () => {
 						</NavLink>
 					</div>
 				</div>
+				{isPending && (
+					<div className="flex fixed inset-0 bg-black/50 items-center justify-center">
+						<BeatLoader
+							color={theme === "dark" ? "#00706e" : "#899492"}
+							size={15}
+						/>
+					</div>
+				)}
 			</form>
 		</div>
 	);

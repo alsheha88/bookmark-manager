@@ -31,8 +31,8 @@ router.post("/register", async (req, res) => {
 		await defaultSeedData(newUser.id)
 
 		res.json({ token });
-	} catch (error) {
-		console.log(error);
+	} catch (error: any) {
+		if (error.code === "P2002") return res.status(409).send({message: "Email already exists"})
 		res.status(500).send({ message: "Failed to create user" });
 	}
 });
