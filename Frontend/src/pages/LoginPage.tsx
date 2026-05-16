@@ -58,6 +58,8 @@ const LoginPage = () => {
 							type="button"
 							onMouseDown={() => setShowPassword(true)}
 							onMouseUp={() => setShowPassword(false)}
+							onTouchStart={() => setShowPassword(true)}
+							onTouchEnd={() => setShowPassword(false)}
 							className="absolute top-[50%] right-3 translate-y-[10%] cursor-pointer">
 							{showPassword ? (
 								<EyeOff
