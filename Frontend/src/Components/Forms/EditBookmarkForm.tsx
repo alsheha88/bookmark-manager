@@ -12,9 +12,13 @@ import { useToastContext } from "../../Context/ToastContext";
 
 type Props = {
 	id: number;
+	title: string;
+	url: string;
+	description: string;
+	tags: string[];
 };
 
-const EditBookmarkForm = ({ id }: Props) => {
+const EditBookmarkForm = ({ id, title, url, description, tags }: Props) => {
 	const { active, close } = useUI();
 	const isModalOpen = active === `edit-bookmark-modal-${id}`;
 	const [count, setCount] = useState(0);
@@ -28,6 +32,12 @@ const EditBookmarkForm = ({ id }: Props) => {
 		reset,
 	} = useForm<BookmarkData>({
 		resolver: zodResolver(bookmarkSchema),
+		defaultValues: {
+			title: title,
+			description: description,
+			websiteURL: url,
+			tags: tags.join(", "),
+		},
 	});
 
 	const onSubmit: SubmitHandler<BookmarkData> = (data) => {

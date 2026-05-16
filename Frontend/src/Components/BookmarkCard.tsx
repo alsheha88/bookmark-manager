@@ -166,7 +166,7 @@ const BookmarkCard = ({
 				</div>
 				<div>{archiveOrPin()}</div>
 			</div>
-			<EditBookmarkForm id={id} />
+			<EditBookmarkForm id={id} title={title} url={url} description={description} tags={tags}  />
 			<ArchiveBookmarkDialog id={id} archive={archive} />
 			<DeleteBookmarkDialog id={id} bookmarkDelete={bookmarkDelete} />
 			<UnarchiveBookmarkDialog id={id} unarchive={unarchive} />
